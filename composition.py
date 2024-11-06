@@ -9,6 +9,9 @@ class Car:
 
     def __str__(self):
         return f"{self.year} {self.make} {self.modle}"
+    #for other programers, for debugging purposes tell class and all atributes
+    def __repr__(self):
+        return f"Car({self.make}, {self.modle}, {self.year}, {self.engine})"
     
 class Engine:
     def __init__(self,configuration,displacement,horsepower,torque):
@@ -20,6 +23,11 @@ class Engine:
     def ignite(self):
         print("Vroom, vroom")
 
+    def __str__(self):
+        return f"The engine is a {self.configuration} with {self.displacement}, {self.horsepower} horsepower and {self.torque} torque"
+
+    def __repr__(self):
+        return f"Engine({self.configuration}, {self.displacement}, {self.horsepower}, {self.torque})"
 
 myengine = Engine("V8",5.8,326,344)
 mycar = Car("Mazda","Mazda3", 2013,myengine)
@@ -27,3 +35,4 @@ mycar = Car("Mazda","Mazda3", 2013,myengine)
 #to call a composit class you must acces where it is saved within the class
 print(mycar)
 mycar.engine.ignite()
+print(repr(mycar))
